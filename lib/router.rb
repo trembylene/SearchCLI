@@ -1,7 +1,8 @@
 # This class acts as the router
 class Router
-  def initialize
-    @running = true
+  def initialize(controller)
+    @controller = true
+    @running    = true
   end
 
   def run
@@ -20,7 +21,7 @@ class Router
 
   def route_action(action)
     case action
-    # when 1 then @controller.search
+    when 1 then @controller.search
     when 0 then stop
     else
       puts 'Please press 1 or 0'
