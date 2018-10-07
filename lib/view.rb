@@ -10,14 +10,14 @@ class View
     puts ''
     puts '*****************************************************************'
     if !search_results[0].nil?
-      results_found(search_term)
+      results_found(search_results, search_term)
     else
       results_not_found
     end
     puts '*****************************************************************'
   end
 
-  def results_found(search_term)
+  def results_found(search_results, search_term)
     puts "Your search query '#{search_term}' matches the following results: "
 
     search_results.each_with_index do |result, index|
