@@ -12,7 +12,7 @@ class View
     if !search_results[0].nil?
       results_found(search_results, search_term)
     else
-      results_not_found
+      results_not_found(search_term)
     end
     puts '*****************************************************************'
   end
@@ -29,7 +29,7 @@ class View
     end
   end
 
-  def results_not_found
+  def results_not_found(search_term)
     # rubocop:disable LineLength
     puts "Sorry, we found no results matching your search query '#{search_term}'"
     # rubocop:enable LineLength
