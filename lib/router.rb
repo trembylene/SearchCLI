@@ -1,7 +1,7 @@
 # This class acts as the router
 class Router
-  def initialize(controller)
-    @controller = controller
+  def initialize(user_controller)
+    @user_controller = user_controller
     @running    = true
   end
 
@@ -21,7 +21,7 @@ class Router
 
   def route_menu_selection(menu_selection)
     case menu_selection
-    when 1 then @controller.search
+    when 1 then @user_controller.search
     when 0 then stop_program
     else
       puts '*********************************************************************************'
@@ -42,7 +42,7 @@ class Router
     puts ''
     puts 'MENU:'
     puts 'What do you want to do next?'
-    puts '1 - Search all data'
+    puts '1 - Search all user data'
     puts '0 - Stop and exit the program'
   end
 end

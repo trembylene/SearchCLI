@@ -2,9 +2,9 @@ require_relative 'view'
 require_relative 'search'
 
 # This class acts as the controller
-class Controller
-    def initialize(json_data)
-        @json_data = json_data
+class UserController
+    def initialize(user_data)
+        @user_data = user_data
         @view = View.new
     end
 
@@ -13,7 +13,7 @@ class Controller
         search_term = @view.ask_search_term
 
         # Get list of all data
-        all_data = @json_data.data_hash
+        all_data = @user_data.data_hash
 
         # Use the search term to search the data for a match
         matched_results = search_json_data(search_term, all_data)
