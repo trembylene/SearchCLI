@@ -20,6 +20,7 @@ class Router
 
   private
 
+  # rubocop:disable LineLength
   def route_menu_selection(menu_selection)
     case menu_selection
     when 1 then @users_controller.search
@@ -32,6 +33,7 @@ class Router
       puts '*********************************************************************************'
     end
   end
+  # rubocop:enable LineLength
 
   def stop_program
     @running = false
