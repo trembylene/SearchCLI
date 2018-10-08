@@ -5,21 +5,16 @@ def search_json_data(search_term, users, organizations)
   users.each do |user|
     user.values.find_all do |value|
       if value == search_term.to_i
-
         user[:related_entities] = get_related_entities(user, organizations)
         @matched_results << user
-
-        #save entities into matched results with user
       elsif value == search_term
         user[:related_entities] = get_related_entities(user, organizations)
         @matched_results << user
       elsif value.is_a?(Array)
         value.each do |array_item|
-          if array_item == search_term || array_item == search_term.to_i
-            user[:related_entities] = get_related_entities(user, organizations)
-        @matched_results << user
-
-          end
+          next unless array_item == search_term || array_item == search_term.to_i
+          user[:related_entities] = get_related_entities(user, organizations)
+          @matched_results << user
         end
       end
     end
@@ -32,14 +27,12 @@ end
 def get_related_entities(user, organizations)
   @related_entities = []
 
-  id = user["organization_id"]
+  id = user['organization_id']
 
   organizations.each do |organization|
-    if organization["_id"] == id
-      @related_entities << organization
-    end
+    @related_entities << organization if organization['_id'] == id
   end
 
   @related_entities
-    # need to return tickets 
+  # need to return tickets
 end
