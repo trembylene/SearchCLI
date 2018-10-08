@@ -36,4 +36,4 @@ router = Router.new(users_controller, tickets_controller, organizations_controll
 # rubocop:enable LineLength
 
 # Start the app
-router.run
+router.run(organizations_controller)

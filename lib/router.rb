@@ -7,7 +7,7 @@ class Router
     @running = true
   end
 
-  def run
+  def run(organizations_controller)
     puts 'Welcome to the Search CLI!'
     puts '           --             '
 
@@ -15,15 +15,15 @@ class Router
       display_menu
       menu_selection = gets.chomp.to_i
       print `clear`
-      route_menu_selection(menu_selection)
+      route_menu_selection(menu_selection, organizations_controller)
     end
   end
 
   private
 
-  def route_menu_selection(menu_selection)
+  def route_menu_selection(menu_selection, organizations_controller)
     case menu_selection
-    when 1 then @users_controller.search
+    when 1 then @users_controller.search(organizations_controller)
     when 2 then @tickets_controller.search
     when 3 then @organizations_controller.search
     when 0 then stop_program
