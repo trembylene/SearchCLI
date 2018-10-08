@@ -1,4 +1,4 @@
-# This class acts as the view
+# This class acts as the view for Users
 class UserView
   def ask_search_term
     puts 'Please type what you would like to search for, then press enter.'
