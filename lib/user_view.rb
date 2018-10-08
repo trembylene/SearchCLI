@@ -1,4 +1,4 @@
-# This class acts as the view
+# This class acts as the view for Users
 class UserView
   def ask_search_term
     puts 'Please type what you would like to search for, then press enter.'
@@ -49,13 +49,17 @@ class UserView
   def humanize_entities(entities)
     puts ''
     puts '*************'
-    puts 'Here are all related entities for the above result'
-    entities.each do |entity|
-      puts '*****'
-      entity.each do |hash_key, hash_value|
-        puts "#{hash_key}: #{hash_value}"
+    if !entities[0].nil?
+      puts 'Here are all related entities for the above result'
+      entities.each do |entity|
+        puts '*****'
+        entity.each do |hash_key, hash_value|
+          puts "#{hash_key}: #{hash_value}"
+        end
+        puts '*****'
       end
-      puts '*****'
+    else
+      puts 'There are no related entities for the above result'
     end
     puts '*************'
   end
