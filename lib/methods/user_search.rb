@@ -2,6 +2,7 @@
 # trawling to search for user matches to the users query, and data
 # trawling to search for entities related to each returned match
 class UserSearch
+  # rubocop:disable Metrics/MethodLength
   def search_json_data(search_term, users, organizations)
     # searches data for match to user search query
     @matched_results = []
@@ -16,6 +17,7 @@ class UserSearch
           value.each do |array_item|
             # rubocop:disable LineLength
             next unless array_item == search_term || array_item == search_term.to_i
+            # rubocop:enable LineLength
             return_related_entities(user, organizations)
           end
         end
@@ -24,7 +26,8 @@ class UserSearch
 
     @matched_results
   end
-  
+  # rubocop:enable Metrics/MethodLength
+
   def return_related_entities(user, organizations)
     # returns matched user object with any related entities
     user[:related_entities] = get_related_entities(user, organizations)

@@ -1,5 +1,5 @@
-# This class acts as the view for the Tickets controller, which 
-# takes gets input from the user, and displays ticket and related 
+# This class acts as the view for the Tickets controller, which
+# takes gets input from the user, and displays ticket and related
 # entities information to the user in readable format
 class TicketView
   def ask_search_term
@@ -65,7 +65,11 @@ class TicketView
       entities.each do |entity|
         puts '*****'
         entity.each do |hash_key, hash_value|
-          puts "#{hash_key.capitalize}: #{hash_value}"
+          if hash_key == :related_entities
+              puts ''
+          else
+              puts "#{hash_key.capitalize}: #{hash_value}"
+          end
         end
         puts '*****'
       end

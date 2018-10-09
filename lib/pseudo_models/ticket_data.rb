@@ -1,7 +1,7 @@
 # Load required libraries
 require 'json'
 
-# This class acts as the pseudo model/database for Ticket 
+# This class acts as the pseudo model/database for Ticket
 # information, by parsing json into ruby hash upon app
 # load, and by making this data available to the controller
 class TicketData

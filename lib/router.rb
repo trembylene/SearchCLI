@@ -1,10 +1,11 @@
 # This class acts as the router
 class Router
-  def initialize(users_controller, tickets_controller, organizations_controller)
+  def initialize(users_controller, tickets_controller, organizations_controller, mega_controller)
     # loads required instances
     @users_controller = users_controller
     @tickets_controller = tickets_controller
     @organizations_controller = organizations_controller
+    @mega_controller = mega_controller
     @running = true
   end
 
@@ -33,6 +34,7 @@ class Router
     when 1 then @users_controller.search(organizations_controller)
     when 2 then @tickets_controller.search(users_controller, organizations_controller)
     when 3 then @organizations_controller.search(users_controller, tickets_controller)
+    when 4 then @mega_controller.search(users_controller, tickets_controller, organizations_controller)
     # rubocop:enable LineLength
     when 0 then stop_program
     else
@@ -55,6 +57,7 @@ class Router
     # rubocop:enable LineLength
   end
 
+  # rubocop:disable Metrics/MethodLength
   def display_menu
     # menu options that are rendered to the user
     puts ''
@@ -66,7 +69,9 @@ class Router
     puts '1 - Search all user data'
     puts '2 - Search all ticket data'
     puts '3 - Search all organization data'
+    puts '4 - Search all data'
     puts ''
     puts '0 - Stop and exit the program'
   end
+  # rubocop:enable Metrics/MethodLength
 end

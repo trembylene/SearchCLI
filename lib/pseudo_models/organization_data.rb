@@ -1,7 +1,7 @@
 # Load required libraries
 require 'json'
 
-# This class acts as the pseudo model/database for Organization 
+# This class acts as the pseudo model/database for Organization
 # information, by parsing json into ruby hash upon app
 # load, and by making this data available to the controller
 class OrganizationData

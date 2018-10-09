@@ -1,7 +1,7 @@
 require_relative '../views/organization_view'
 require_relative '../methods/organization_search'
 
-# Handling all user requests coming from the router, 
+# Handling all user requests coming from the router,
 # this class acts as the controller for all Organization related requests,
 # and coordinates connections between related files in the application.
 class OrganizationsController
@@ -18,7 +18,7 @@ class OrganizationsController
   end
 
   def search(users_controller, tickets_controller)
-    # search method to return results to the terminal, 
+    # search method to return results to the terminal,
     # via coordiation between necessary data, views,
     # and methods
     @tickets_controller = tickets_controller
