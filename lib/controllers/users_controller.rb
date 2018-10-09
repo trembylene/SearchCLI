@@ -1,5 +1,5 @@
-require_relative 'user_view'
-require_relative 'user_search'
+require_relative '../views/user_view'
+require_relative '../methods/user_search'
 
 # This class acts as the controller for User data
 class UsersController

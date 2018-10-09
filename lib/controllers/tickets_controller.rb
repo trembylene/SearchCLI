@@ -1,5 +1,5 @@
-require_relative 'ticket_view'
-require_relative 'ticket_search'
+require_relative '../views/ticket_view'
+require_relative '../methods/ticket_search'
 
 # This class acts as the controller for Ticket data
 class TicketsController
