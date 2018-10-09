@@ -1,14 +1,17 @@
 # Load required user files
-require_relative 'user_data'
-require_relative 'users_controller'
+require_relative 'pseudo_models/user_data'
+require_relative 'controllers/users_controller'
 
 # Load required ticket files
-require_relative 'ticket_data'
-require_relative 'tickets_controller'
+require_relative 'pseudo_models/ticket_data'
+require_relative 'controllers/tickets_controller'
 
 # Load required organization files
-require_relative 'organization_data'
-require_relative 'organizations_controller'
+require_relative 'pseudo_models/organization_data'
+require_relative 'controllers/organizations_controller'
+
+# Load required mega files
+require_relative 'controllers/mega_controller'
 
 # Load router file
 require_relative 'router'
@@ -31,8 +34,11 @@ organization_file = File.read('lib/data/organizations.json')
 organization_data = OrganizationData.new(organization_file)
 organizations_controller = OrganizationsController.new(organization_data)
 
+# Initialize organization files
+mega_controller = MegaController.new
+
 # rubocop:disable LineLength
-router = Router.new(users_controller, tickets_controller, organizations_controller)
+router = Router.new(users_controller, tickets_controller, organizations_controller, mega_controller)
 # rubocop:enable LineLength
 
 # Start the app
