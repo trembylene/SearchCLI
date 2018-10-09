@@ -39,7 +39,7 @@ class TicketSearch
         id = ticket['submitter_id']
         find_entity(id, users_data)
 
-        # check for submitter entities
+        # check for assignee entities
         id = ticket['assignee_id']
         find_entity(id, users_data)
     
@@ -47,7 +47,6 @@ class TicketSearch
     end
     
     def find_entity(id, related_entity_results)
-        
         related_entity_results.each do |entity|
             @related_entities << entity if entity['_id'] == id
         end

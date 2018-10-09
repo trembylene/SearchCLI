@@ -26,7 +26,7 @@ class Router
     case menu_selection
     when 1 then @users_controller.search(organizations_controller)
     when 2 then @tickets_controller.search(users_controller, organizations_controller)
-    when 3 then @organizations_controller.search
+    when 3 then @organizations_controller.search(users_controller, tickets_controller)
     when 0 then stop_program
     else
       display_selection_error
