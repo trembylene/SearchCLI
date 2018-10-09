@@ -1,54 +1,59 @@
+# This class acts as a search feature for Tickets, which handles data
+# trawling to search for ticket matches to the users query, and data
+# trawling to search for entities related to each returned match
 class TicketSearch
-    # rubocop:disable Metrics/MethodLength
-    def search_json_data(search_term, users, organizations, tickets)
-        @matched_results = []
-    
-        tickets.each do |ticket|
-            ticket.values.find_all do |value|
-                if value == search_term.to_i
-                ticket[:related_entities] = get_related_entities(ticket, organizations, users)
-                @matched_results << ticket
-                elsif value == search_term
-                ticket[:related_entities] = get_related_entities(ticket, organizations, users)
-                @matched_results << ticket
-                elsif value.is_a?(Array)
-                value.each do |array_item|
-                    next unless array_item == search_term || array_item == search_term.to_i
-                        ticket[:related_entities] = get_related_entities(ticket, organizations, users)
-                        @matched_results << ticket
-                    end
-                end
-            end
+  def search_json_data(search_term, users, organizations, tickets)
+    # searches data for match to user search query
+    @matched_results = []
+
+    tickets.each do |ticket|
+      ticket.values.find_all do |value|
+        if value == search_term.to_i
+            return_related_entities(ticket, organizations, users)
+        elsif value == search_term
+            return_related_entities(ticket, organizations, users)
+        elsif value.is_a?(Array)
+          value.each do |array_item|
+            next unless array_item == search_term || array_item == search_term.to_i
+            return_related_entities(ticket, organizations, users)
+          end
         end
-    
-        @matched_results
+      end
     end
-    # rubocop:enable Metrics/MethodLength
-    
-    def get_related_entities(ticket, organizations, users)
-        organizations_data = organizations
-        users_data = users
 
-        @related_entities = []
+    @matched_results
+  end
 
-        # check for organization entities
-        id = ticket['organization_id']
-        find_entity(id, organizations_data)
-        
-        # check for submitter entities
-        id = ticket['submitter_id']
-        find_entity(id, users_data)
+  def return_related_entities(ticket, organizations, users)
+    # returns matched ticket object with any related entities
+    # rubocop:disable LineLength
+    ticket[:related_entities] = get_related_entities(ticket, organizations, users)
+    # rubocop:enable LineLength
+    @matched_results << ticket
+  end
 
-        # check for assignee entities
-        id = ticket['assignee_id']
-        find_entity(id, users_data)
-    
-        @related_entities
+  def get_related_entities(ticket, organizations, users)
+    # checks for related entities
+    organizations_data = organizations
+    users_data = users
+    @related_entities = []
+
+    id = ticket['organization_id']
+    find_entity(id, organizations_data)
+
+    id = ticket['submitter_id']
+    find_entity(id, users_data)
+
+    id = ticket['assignee_id']
+    find_entity(id, users_data)
+
+    @related_entities
+  end
+
+  def find_entity(id, related_entity_results)
+    # returns related entities
+    related_entity_results.each do |entity|
+      @related_entities << entity if entity['_id'] == id
     end
-    
-    def find_entity(id, related_entity_results)
-        related_entity_results.each do |entity|
-            @related_entities << entity if entity['_id'] == id
-        end
-    end
+  end
 end
