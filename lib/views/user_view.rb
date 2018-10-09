@@ -68,7 +68,7 @@ class UserView
           if hash_key == :related_entities
             puts ''
           else
-              puts "#{hash_key.capitalize}: #{hash_value}"
+            puts "#{hash_key.capitalize}: #{hash_value}"
           end
         end
         puts '*****'

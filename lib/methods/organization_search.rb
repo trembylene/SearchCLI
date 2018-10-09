@@ -6,7 +6,7 @@ class OrganizationSearch
   def search_json_data(search_term, users, organizations, tickets)
     # searches data for match to user search query
     @matched_results = []
-    
+
     organizations.each do |organization|
       organization.values.find_all do |value|
         if value == search_term.to_i

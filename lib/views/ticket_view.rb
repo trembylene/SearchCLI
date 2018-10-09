@@ -66,9 +66,9 @@ class TicketView
         puts '*****'
         entity.each do |hash_key, hash_value|
           if hash_key == :related_entities
-              puts ''
+            puts ''
           else
-              puts "#{hash_key.capitalize}: #{hash_value}"
+            puts "#{hash_key.capitalize}: #{hash_value}"
           end
         end
         puts '*****'
