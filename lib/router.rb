@@ -53,7 +53,7 @@ class Router
     # error message for invalid user input
     # rubocop:disable LineLength
     puts '*********************************************************************************'
-    puts 'ERROR: Please make a valid selection by pressing 1, 2, 3, or 0, and then pressing enter.'
+    puts 'ERROR: Please make a valid selection by pressing 1, 2, 3, 4, or 0, and then pressing enter.'
     puts 'All other inputs are invalid.'
     puts '*********************************************************************************'
     # rubocop:enable LineLength
@@ -64,7 +64,7 @@ class Router
     # menu options that are rendered to the user
     puts ''
     puts 'MENU INSTRUCTIONS: '
-    puts 'Please press 1, 2, 3, or 0'
+    puts 'Please press 1, 2, 3, 4, or 0'
     puts ''
     puts 'MENU:'
     puts 'What do you want to do next?'
