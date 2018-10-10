@@ -7,5 +7,11 @@ For Ruby on MAC:
     rbenv install 2.5.1
     ruby -v
 
+For RSpec on MAC:
+    gem install rspec
+
 - How to run the SearchCLI
 ruby lib/app.rb
+
+- How to run RSpec
+rspec --format doc
