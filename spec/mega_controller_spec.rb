@@ -7,7 +7,6 @@ RSpec.describe MegaController do
       it 'should return a search term and matched results' do
         search_term = 'test'
         matched_results = [{ test: 'test' }]
-        mega_view = MegaView.new
 
         expect(search_term).to eq('test')
         expect(matched_results).to eq([{ test: 'test' }])

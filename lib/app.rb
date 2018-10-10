@@ -16,9 +16,6 @@ require_relative 'controllers/mega_controller'
 # Load router file
 require_relative 'router'
 
-# To take out after code is done
-require 'pry-byebug'
-
 # Initialize user files
 user_file = File.read('lib/data/users.json')
 user_data = UserData.new(user_file)

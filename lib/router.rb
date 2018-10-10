@@ -1,6 +1,8 @@
 # This class acts as the router
 class Router
+  # rubocop:disable LineLength
   def initialize(users_controller, tickets_controller, organizations_controller, mega_controller)
+    # rubocop:enable LineLength
     # loads required instances
     @users_controller = users_controller
     @tickets_controller = tickets_controller

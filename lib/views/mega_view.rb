@@ -29,31 +29,39 @@ class MegaView
       puts ''
       puts '**************************'
       puts '*************'
-      if index == 0
-        puts 'ORGANIZATION RESULTS'
-      elsif index == 1
-        puts 'TICKET RESULTS'
-      elsif index == 2
-        puts 'USER RESULTS'
-      end
+      check_index(index)
       mega_search_result.each do |search_result|
         puts ''
         puts '**************************'
         puts '*************'
         puts 'NEXT RESULT:'
-        search_result.each do |key, value|
-          if key == :related_entities
-            humanize_entities(value)
-          else
-            humanize_result(key, value)
-          end
-        end
+        return_search_result(search_result)
       end
     end
     puts '**************************'
     puts ''
   end
   # rubocop:enable Metrics/MethodLength
+
+  def check_index(index)
+    if index.zero?
+      puts 'ORGANIZATION RESULTS'
+    elsif index == 1
+      puts 'TICKET RESULTS'
+    elsif index == 2
+      puts 'USER RESULTS'
+    end
+  end
+
+  def return_search_result(search_result)
+    search_result.each do |key, value|
+      if key == :related_entities
+        humanize_entities(value)
+      else
+        humanize_result(key, value)
+      end
+    end
+  end
 
   def results_not_found(search_term)
     # message if no results returned
@@ -67,11 +75,19 @@ class MegaView
     puts "#{key.capitalize}: #{value}"
   end
 
-  # rubocop:disable Metrics/MethodLength
   def humanize_entities(entities)
     # makes data values of related results readible
     puts ''
     puts '*************'
+    check_entities_present(entities)
+    puts '*************'
+    puts ''
+    puts ''
+    puts ''
+  end
+
+  # rubocop:disable Metrics/MethodLength
+  def check_entities_present(entities)
     if !entities[0].nil?
       puts 'Here are all related entities for the above result'
       entities.each do |entity|
@@ -88,10 +104,6 @@ class MegaView
     else
       puts 'There are no related entities for the above result'
     end
-    puts '*************'
-    puts ''
-    puts ''
-    puts ''
   end
-    # rubocop:enable Metrics/MethodLength
-  end
+  # rubocop:enable Metrics/MethodLength
+end

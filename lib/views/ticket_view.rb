@@ -55,11 +55,16 @@ class TicketView
     puts "#{key.capitalize}: #{value}"
   end
 
-  # rubocop:disable Metrics/MethodLength
   def humanize_entities(entities)
     # makes data values of related results readible
     puts ''
     puts '*************'
+    check_entities_present(entities)
+    puts '*************'
+  end
+
+  # rubocop:disable Metrics/MethodLength
+  def check_entities_present(entities)
     if !entities[0].nil?
       puts 'Here are all related entities for the above result'
       entities.each do |entity|
@@ -76,7 +81,6 @@ class TicketView
     else
       puts 'There are no related entities for the above result'
     end
-    puts '*************'
   end
   # rubocop:enable Metrics/MethodLength
 end

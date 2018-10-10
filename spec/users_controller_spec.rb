@@ -1,7 +1,6 @@
 require 'pseudo_models/user_data'
 require 'views/user_view'
 require 'controllers/users_controller'
-
 RSpec.describe UsersController do
   context 'When testing the UsersController class' do
     describe '.list' do
@@ -19,7 +18,6 @@ RSpec.describe UsersController do
       it 'should return a search term and matched results' do
         search_term = 'test'
         matched_results = [{ test: 'test' }]
-        user_view = UserView.new
 
         expect(search_term).to eq('test')
         expect(matched_results).to eq([{ test: 'test' }])

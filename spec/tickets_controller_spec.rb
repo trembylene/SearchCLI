@@ -1,7 +1,6 @@
 require 'pseudo_models/ticket_data'
 require 'views/ticket_view'
 require 'controllers/tickets_controller'
-
 RSpec.describe TicketsController do
   context 'When testing the TicketsController class' do
     describe '.list' do
@@ -19,7 +18,6 @@ RSpec.describe TicketsController do
       it 'should return a search term and matched results' do
         search_term = 'test'
         matched_results = [{ test: 'test' }]
-        ticket_view = TicketView.new
 
         expect(search_term).to eq('test')
         expect(matched_results).to eq([{ test: 'test' }])

@@ -15,6 +15,7 @@ class MegaController
     @user_search = UserSearch.new
   end
 
+  # rubocop:disable Metrics/MethodLength
   def search(users_controller, tickets_controller, organizations_controller)
     # search method to return results to the terminal,
     # via coordiation between necessary data, views,
@@ -37,4 +38,5 @@ class MegaController
     # rubocop:enable LineLength
     @mega_view.list_search_results(mega_results, search_term)
   end
+  # rubocop:enable Metrics/MethodLength
 end
